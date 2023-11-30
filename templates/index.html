@@ -1,0 +1,29 @@
+
+<!-- ヘッダーの読み込み -->
+{{ template "header" .}}
+<p>{{ .Message }}</p>
+
+<h4 class="mt-4">Post list.</h4>
+{{range $n,$Itm := .Plist}}
+<div class="media border m-1 p-2">
+    <a href="/post?pid={{$Itm.Model.ID}}">
+        <img class="mr-3" src="https://img.youtube.com/vi/{{$Itm.Address}}/default.jpg" alt="Generic placeholder image">
+    </a>
+    <div class="media-body">
+        <h5 class="mt-0">{{$Itm.Address}}</h5>
+        {{$Itm.Message}}
+    </div>
+</div>
+{{end}}
+
+<h4 class="mt-4">Group list.</h4>
+{{range $n,$Itm := .Glist}}
+<div class="media border m-1 p-2">
+    <div class="media-body">
+        <a href="/group?gid={{$Itm.ID}}"><h5 class="mt-0">{{$Itm.Name}}</h5></a>
+        {{$Itm.Message}}
+    </div>
+</div>
+{{end}}
+<!-- フッターの読み込み -->
+{{ template "footer" .}}

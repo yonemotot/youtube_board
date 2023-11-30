@@ -1,0 +1,34 @@
+
+<!-- ヘッダーの読み込み -->
+{{ template "header" .}}
+<p>{{ .Message }}</p>
+
+<h4 class="mt-4">"{{.Group.Name}}" group.</h4>
+
+<form method="post" action="/group?gid={{.Group.Model.ID}}">
+    <div class="form-group mt-4">
+        <label for="address" class="h6">Youtube share address:</label>
+        <input type="text" class="form-control" 
+        id="address" name="address" placeholder="https://youtu.be/xxxxx">
+    </div>
+    <div class="form-group mt-4">
+        <label for="message" class="h6">Message:</label>
+        <input type="text" class="form-control" id="message" name="message">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Post group.</button>
+</form>
+
+{{range $n,$Itm := .Plist}}
+<div class="media border m-1 p-2">
+    <a href="/post?pid={{$Itm.Model.ID}}">
+        <img class="mr-3" src="https://img.youtube.com/vi/{{$Itm.Address}}/1.jpg" alt="Generic placeholder image">
+    </a>
+    <div class="media-body">
+        <h5 class="mt-0">{{$Itm.Address}}</h5>
+        {{$Itm.Message}}
+    </div>
+</div>
+{{end}}
+
+<!-- フッターの読み込み -->
+{{ template "footer" .}}

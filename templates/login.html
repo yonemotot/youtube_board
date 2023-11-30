@@ -1,0 +1,21 @@
+
+<!-- ヘッダーの読み込み -->
+{{ template "header" .}}
+<h4>{{ .Message }}</h4>
+<form action="/login" method="post">
+    <div class="form-group">
+        <label for="Account">Account(mail address)</label>
+        <input type="mail" class="form-control" 
+            id="account" name="account">
+      </div>
+      <div class="form-group">
+        <label for="pass">Password</label>
+        <input type="password" class="form-control" 
+            id="pass" name="pass">
+      </div>
+      <button type="submit" class="btn btn-primary">
+          Click</button>
+</form>
+
+<!-- フッターの読み込み -->
+{{ template "footer" .}}
